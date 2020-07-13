@@ -9,39 +9,38 @@
 </head>
 
 <body>
-  <div class="container">
+     <div class="container">
     <nav class="navbar" role="navigation">
       <ul class="nav-wrapper">
         <li class="nav-item">Where in the world? </li>
-        <li class="nav-item">
-          Dark mode
-          <div class="toggle-dark-mode">
-            <input type="checkbox" name="" id="toggle-check" role="toggle"/>
-            <label for="" class="toggle-bg"></label>
-          </div>
+        <li class="nav-item-two">
+          <h>Dark mode</h>
+          <label class="toggle-dark-mode" role="toggle">
+            <input type="checkbox" name="" id="toggle-check" role="toggle" onclick="DARK_MODE()"/>
+            <span class="toggle-bg"></span>
+          </label>
         </li>
       </ul>
     </nav>
+ 
     <main class="content">
-      <header role="heading">
+      <header>
         <div class="country-selection">
-          <input type="text" name="" id="search" value="" role="search"/>
+          <input type="text" size="30" name="" id="search" value="" role="search" placeholder="Search for a country..." onkeyup="Filter_Countries()"/>
         </div>
-        <div class="country-selection">
-          <select class="" role="selection">
-            <option value="">Africa</option>
-            <option value="">America</option>
-            <option value="">Asia</option>
-            <option>Europe</option>
-            <option value="">Oceania</option>
+        <div class="region-selection">
+          <select id="region" onclick="getValue()">
+           <option value="">Filter by Region</option>
+            <option value="africa">Africa</option>
+            <option value="americas">America</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="oceania">Oceania</option>
           </select>
         </div>
         </header>
+     <button type="button" onclick="getCountry()" id="homepage">Back</button>
         <article class="countries" id="countries-list">
-          
-        </article>
-        <article class="full-info" id="full-info">
-          <p>just testing here</p>
         </article>
       </main>
     </div>
