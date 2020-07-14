@@ -1,18 +1,23 @@
-const article = document.getElementById('countries-list');
-const search = document.getElementById('search');
+let article = document.getElementById('countries-list');
+let search = document.getElementById('search');
+const getCountryDetails = document.getElementById("getCountryDetails");
 const fullInfo = document.getElementById("full-info");
 const toggle = document.getElementById("toggle-check");
 const toggleDarkMode = document.querySelector(".toggle-dark-mode");
 const container = document.querySelector(".container");
 let region = document.getElementById("region");
 const goHome = document.getElementById("homepage");
+const countryFullDetails = document.querySelector(".full-details-container")
 
 const DARK_MODE = () => {
       document.body.classList.toggle("dark-mode");
     }
-    
+
 const getValue = async () => {
 let selected = region.options[region.selectedIndex].value;
+countryFullDetails.classList.add("active");
+article.classList.remove("active")
+//console.log(selected)
 try {
 const fetchRegion = await fetch(`
   https://restcountries.eu/rest/v2/region/${selected}`);
@@ -20,7 +25,7 @@ const fetchRegion = await fetch(`
  let COUNTRY_INFO = '';
       data.forEach(datas => {
        COUNTRY_INFO += `
-    <div class="country-container" onclick="DISPLAY_DETAILS()">
+    <div class="country-container">
       <input type="hidden" value="${datas.alpha3Code}">
       <img class="country-flag" src="${datas.flag}">
       <ul>
@@ -39,38 +44,48 @@ catch(error){
 }
 goHome.classList.add("active")
 }
-
+// display country full details when searched
 const DISPLAY_DETAILS = async () => {
+  countryFullDetails.classList.remove("active");
+  goHome.classList.remove("active");
   try{
-    let g = article.firstChild.nextSibling.firstElementChild.value.toLowerCase();
-    console.log(g);
-    
-    let url = `https://restcountries.eu/rest/v2/alpha/${g}`;
+    article.classList.add("active");
+    let val = search.value.toLowerCase().trim();
+    let url = `https://restcountries.eu/rest/v2/name/${val}?fullText=true`;
     const resp = await fetch(url);
-    const data = await resp.json();
+    const datas = await resp.json();
+    console.log(datas);
         let full = "";
+        datas.map(data => {
           full += `
+          <button type="button" onclick="getCountry()"><=Back</button>
+         <div class="country-fulldetails">
+         <aside class="country-fulldetails-flag">
+         <img src="${data.flag}"/>
+         </aside>
+         <aside class="country-fulldetails-info">
          <div>
-         <img src=${data.flag}/>
          <h3>${data.name}</h3>
+         </div>
+         <div>
           <ul>
-            <li><p>Native Name: ${data. demonym}</p></li>
-            <li><p>Population: ${data.population.toLocaleString()}</p></li>
-            <li><p>Region:${data.region}</p></li>
-            <li><p>Sub-Region: ${data.subregion}</p></li>
-            <li><p>Capital: ${data.capital}</p></li>
-            <li><p>Top Level Domain: ${data.topLevelDomain}</p></li>
-            <li><p>Currencies: ${data.currencies[0].name}</p></li>
-            <li><p>Languages: <span> ${data.languages[0].name}</span>, <span> ${data.languages[1].name}</span>,  <span> ${data.languages[2].name}</span></p></li>
+            <li><span>Native Name:</span> ${data. demonym}</li>
+            <li><span>Population:</span> ${data.population.toLocaleString()}</li>
+            <li><span>Region:</span> ${data.region}</li>
+            <li><span>Sub-Region:</span> ${data.subregion}</li>
+            <li><span>Capital: </span>${data.capital}</li>
+            </ul>
+            <ul>
+            <li><span>Currencies: </span> ${data.currencies[0].name}</li>
+            <li><span>Languages: </span> ${data.languages[0].name}</li>
+            <li><span>Top Level Domain: </span>${data.topLevelDomain}</li>
+            <li><span>Timezone:</span> ${data.timezones[0]}</li>
+             <li><span>Area:</span> ${data.area.toLocaleString()}</li>
           </ul>
-          <aside>
-          <p>Border Countries:</p>
-          <button type="button"> ${data.borders[0]}</button>
-          <button type="button"> ${data.borders[1]}</button>
-          <button type="button">${data.borders[2]}</button>
+          </div>
           </aside>
-         </div> `
-         article.innerHTML = full;
+         </div>`.trim()}) 
+         countryFullDetails.innerHTML = full;
          } 
         catch(error){
           console.log(error)
@@ -83,8 +98,11 @@ const DISPLAY_DETAILS = async () => {
       const data = await resp.json();
       let COUNTRY_INFO = '';
       data.forEach(datas => {
+        //if(datas.capital === "" || datas.capital === null){
+         // return "none";
+        //}
        COUNTRY_INFO += `
-    <div class="country-container" onclick="DISPLAY_DETAILS()">
+    <div class="country-container">
       <input type="hidden" value="${datas.alpha3Code}">
       <img class="country-flag" src="${datas.flag}">
       <ul>
@@ -101,12 +119,12 @@ const DISPLAY_DETAILS = async () => {
       catch(error){
         console.log(error);
       }
-      goHome.classList.remove("active")
+      article.classList.remove("active");
+      goHome.classList.remove("active");
+      countryFullDetails.classList.add("active");
     }
-    function Filter_Countries(event) {
-      let searchInput = event.target.value.toLowerCase();
-      let items;
-    }
+  
     window.onload = function() {
       getCountry();
     }
+    
