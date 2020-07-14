@@ -8,6 +8,7 @@ body {
   font-family: sans-serif;
   transition:background-color.4s ease-in;
   font-family: 'Baloo Da 2', cursive;
+  overflow-x: none;
 }
 a {
   text-decoration: none;
@@ -63,7 +64,7 @@ header {
   margin-top:2rem;
   margin-right:3rem;
   margin-left:3rem;
-  width: 100%;
+  width: 90%;
   justify-content: space-between;
 }
 .region-selection {
@@ -206,7 +207,7 @@ input[type="checkbox"]:focus + .toggle-bg {
 }
 .country-container {
   width: 21%;
-  height: 100%;
+  height: 350px;
   margin-right: 1.2rem;
   margin-left:1.2rem;
   margin-bottom: 3rem;
@@ -272,6 +273,20 @@ input[type="checkbox"]:focus + .toggle-bg {
 .country-fulldetails-info span:only-of-type {
   -webkit-text-stroke:0.031rem;
   margin: 0.5rem auto;
+}
+.details-home-btn {
+  display: block;
+  border: none;
+  background-color:white;
+  border-radius: 2px;
+  width:80px;
+  padding :0.5rem;
+  -webkit-box-shadow:0 0.125rem 0.25rem rgba(0,0,0,0.125);
+  box-shadow: 0 0.125rem 0.25rem rgba (0,0,0,0.2);
+  font-weight: bold; 
+}
+ i {
+  margin-right:0.5rem;
 }
 @media all and (min-width:320px) and (max-width:560px) {
  .nav-item {
@@ -372,3 +387,18 @@ header #search {
   margin: 0.5rem auto;
 } 
 }
+@media all and (min-width:561px) and (max-width:774px) {
+ .navbar {
+   margin:0 auto;
+ }
+ header {
+  display:flex;
+  margin:2rem auto;
+  width: 100%;
+  justify-content: space-between;
+} 
+.country-container {
+  width: 28%;
+  height: 350px;
+} 
+} 

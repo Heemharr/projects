@@ -58,7 +58,7 @@ const DISPLAY_DETAILS = async () => {
         let full = "";
         datas.map(data => {
           full += `
-          <button type="button" onclick="getCountry()"><=Back</button>
+          <button type="button" onclick="getCountry()" class="details-home-btn"><i class="fas fa-arrow-left" ></i>Back</button>
          <div class="country-fulldetails">
          <aside class="country-fulldetails-flag">
          <img src="${data.flag}"/>
