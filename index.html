@@ -26,7 +26,8 @@
     <main class="content">
       <header>
         <div class="country-selection">
-          <input type="text" size="30" name="" id="search" value="" role="search" placeholder="Search for a country..." onkeyup="Filter_Countries()"/>
+          <input type="text" size="30" name="" id="search" value="" role="search" placeholder="Enter Country name..."/>
+          <button type="button" class="search-btn" id="getCountryDetails" onclick="DISPLAY_DETAILS()">Search</button>
         </div>
         <div class="region-selection">
           <select id="region" onclick="getValue()">
@@ -41,6 +42,10 @@
         </header>
      <button type="button" onclick="getCountry()" id="homepage">Back</button>
         <article class="countries" id="countries-list">
+          </article>
+          
+        <article class="full-details-container">
+          
         </article>
       </main>
     </div>
