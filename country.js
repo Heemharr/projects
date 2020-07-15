@@ -7,12 +7,11 @@ const toggleDarkMode = document.querySelector(".toggle-dark-mode");
 const container = document.querySelector(".container");
 let region = document.getElementById("region");
 const goHome = document.getElementById("homepage");
-const countryFullDetails = document.querySelector(".full-details-container")
+const countryFullDetails = document.querySelector(".full-details-container");
 
 const DARK_MODE = () => {
       document.body.classList.toggle("dark-mode");
     }
-
 const getValue = async () => {
 let selected = region.options[region.selectedIndex].value;
 countryFullDetails.classList.add("active");
@@ -25,7 +24,7 @@ const fetchRegion = await fetch(`
  let COUNTRY_INFO = '';
       data.forEach(datas => {
        COUNTRY_INFO += `
-    <div class="country-container">
+    <div class="country-container slide-in-bottom">
       <input type="hidden" value="${datas.alpha3Code}">
       <img class="country-flag" src="${datas.flag}">
       <ul>
@@ -48,6 +47,11 @@ goHome.classList.add("active")
 const DISPLAY_DETAILS = async () => {
   countryFullDetails.classList.remove("active");
   goHome.classList.remove("active");
+  if (search.value === "") {
+    document.querySelector(".search-error").innerHTML = "input a country name";
+    document.querySelector(".search-error-two").innerHTML = "input a country name"
+    getCountry();
+  }
   try{
     article.classList.add("active");
     let val = search.value.toLowerCase().trim();
@@ -58,16 +62,16 @@ const DISPLAY_DETAILS = async () => {
         let full = "";
         datas.map(data => {
           full += `
-          <button type="button" onclick="getCountry()" class="details-home-btn"><i class="fas fa-arrow-left" ></i>Back</button>
+          <button type="button" onclick="getCountry()" class="details-home-btn slide-out-left"><i class="fas fa-arrow-left" ></i>Back</button>
          <div class="country-fulldetails">
-         <aside class="country-fulldetails-flag">
+         <aside class="country-fulldetails-flag slide-in-left">
          <img src="${data.flag}"/>
          </aside>
          <aside class="country-fulldetails-info">
          <div>
-         <h3>${data.name}</h3>
+         <h3 class="tracking-in-contract" >${data.name}</h3>
          </div>
-         <div>
+         <div class="slide-in-bottom" >
           <ul>
             <li><span>Native Name:</span> ${data. demonym}</li>
             <li><span>Population:</span> ${data.population.toLocaleString()}</li>
@@ -101,8 +105,9 @@ const DISPLAY_DETAILS = async () => {
         //if(datas.capital === "" || datas.capital === null){
          // return "none";
         //}
+   
        COUNTRY_INFO += `
-    <div class="country-container">
+    <div class="country-container slide-in-bottom">
       <input type="hidden" value="${datas.alpha3Code}">
       <img class="country-flag" src="${datas.flag}">
       <ul>
@@ -123,8 +128,20 @@ const DISPLAY_DETAILS = async () => {
       goHome.classList.remove("active");
       countryFullDetails.classList.add("active");
     }
-  
-    window.onload = function() {
+    
+    
+    document.onreadystatechange = function() { 
+    if (document.readyState !== "complete") { 
+        document.querySelector("body").style.visibility = "hidden"; 
+        document.querySelector(".loader-container").style.visibility = "visible"; 
+    } else { 
+        document.querySelector(".loader-container").style.display = "none"; 
+        document.querySelector("body").style.visibility = "visible";
+    } 
+};
+    
+    
+   window.onload = function() {
       getCountry();
-    }
+   }
     
