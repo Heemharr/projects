@@ -9,7 +9,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css " type="text/css" />
 </head>
 
-<body>
+<body> 
+  <div class="loader-container">
+    <div class="loader">
+       <div class="dot2"></div>
+       <div class="dot2"></div>
+       <div class="dot2"></div>
+       <div class="dot2"></div>
+    </div>
+  </div>
+
      <div class="container">
     <nav class="navbar" role="navigation">
       <ul class="nav-wrapper">
@@ -27,7 +36,7 @@
     <main class="content">
       <header>
         <div class="country-selection">
-          <input type="text" size="30" name="" id="search" value="" role="search" placeholder="Enter Country name..."/>
+          <input type="text" size="30" name="" id="search" value="" role="search" placeholder="Enter Country name..." required pattern="^\W+ \W+$"/>
           <button type="button" class="search-btn" id="getCountryDetails" onclick="DISPLAY_DETAILS()">Search</button>
         </div>
         <div class="region-selection">
