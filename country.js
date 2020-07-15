@@ -26,7 +26,7 @@ const fetchRegion = await fetch(`
        COUNTRY_INFO += `
     <div class="country-container slide-in-bottom">
       <input type="hidden" value="${datas.alpha3Code}">
-      <img class="country-flag" src="${datas.flag}">
+      <img class="country-flag lazyload" data-src="${datas.flag}">
       <ul>
         <li class="country-name"><p> ${datas.name}</p></li>
         <li class="country-details"><span>Population:</span>  ${datas.population.toLocaleString()}</li>
@@ -65,7 +65,7 @@ const DISPLAY_DETAILS = async () => {
           <button type="button" onclick="getCountry()" class="details-home-btn slide-out-left"><i class="fas fa-arrow-left" ></i>Back</button>
          <div class="country-fulldetails">
          <aside class="country-fulldetails-flag slide-in-left">
-         <img src="${data.flag}"/>
+         <img data-src="${data.flag}" class="lazyload"/>
          </aside>
          <aside class="country-fulldetails-info">
          <div>
@@ -109,7 +109,7 @@ const DISPLAY_DETAILS = async () => {
        COUNTRY_INFO += `
     <div class="country-container slide-in-bottom">
       <input type="hidden" value="${datas.alpha3Code}">
-      <img class="country-flag" src="${datas.flag}">
+      <img class="country-flag lazyload" data-src="${datas.flag}">
       <ul>
       <li class="country-name"><p> ${datas.name}</p></li>
       <li class="country-details"><span>Population:</span>  ${datas.population.toLocaleString()}</li>
@@ -139,8 +139,6 @@ const DISPLAY_DETAILS = async () => {
         document.querySelector("body").style.visibility = "visible";
     } 
 };
-    
-    
    window.onload = function() {
       getCountry();
    }
