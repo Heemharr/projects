@@ -54,7 +54,7 @@ const DISPLAY_DETAILS = async () => {
   }
   try{
     article.classList.add("active");
-    let val = search.value.toLowerCase().trim();
+    let val = search.value.toLowerCase();
     let url = `https://restcountries.eu/rest/v2/name/${val}?fullText=true`;
     const resp = await fetch(url);
     const datas = await resp.json();
