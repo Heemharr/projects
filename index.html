@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=7,8,edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title></title>
   <link rel="stylesheet" href="country.css" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css " type="text/css" />
 </head>
 
-<body> 
+<body>
   <div class="loader-container">
     <div class="loader">
-       <div class="dot2"></div>
-       <div class="dot2"></div>
-       <div class="dot2"></div>
-       <div class="dot2"></div>
+      <div class="dot2"></div>
+      <div class="dot2"></div>
+      <div class="dot2"></div>
+      <div class="dot2"></div>
     </div>
   </div>
-
-     <div class="container">
+  <div class="container">
     <nav class="navbar" role="navigation">
       <ul class="nav-wrapper">
         <li class="nav-item">Where in the world? </li>
         <li class="nav-item-two">
           <h>Dark mode</h>
           <label class="toggle-dark-mode" role="toggle">
-            <input type="checkbox" name="" id="toggle-check" role="toggle" onclick="DARK_MODE()"/>
+            <input type="checkbox" name="" id="toggle-check" role="toggle" onclick="DARK_MODE()" />
             <span class="toggle-bg"></span>
           </label>
         </li>
       </ul>
     </nav>
- 
     <main class="content">
       <header>
         <div class="country-selection">
-          <input type="text" size="30" name="" id="search" value="" role="search" placeholder="Enter Country name..." required pattern="^\W+ \W+$"/>
+          <input type="text" size="30" name="" id="search" value="" role="search" placeholder="Enter Country name..." required pattern="^[a-zA-Z]$" />
           <button type="button" class="search-btn" id="getCountryDetails" onclick="DISPLAY_DETAILS()">Search</button>
+          <span class="search-error-two"></span>
         </div>
+        <div class="search-error"></div>
         <div class="region-selection">
-          <select id="region" onclick="getValue()">
-           <option value="">Filter by Region</option>
+          <select id="region" onchange="getValue()">
+            <option value="">Filter by Region</option>
             <option value="africa">Africa</option>
             <option value="americas">America</option>
             <option value="asia">Asia</option>
@@ -49,18 +50,15 @@
             <option value="oceania">Oceania</option>
           </select>
         </div>
-        </header>
-     <button type="button" onclick="getCountry()" id="homepage"><i class="fas fa-arrow-left"></i>Home </button>
-        <article class="countries" id="countries-list">
-          </article>
-          
-        <article class="full-details-container">
-          
-        </article>
-      </main>
-    </div>
-
-    <script src=" country.js" type="text/javascript" charset="utf-8"></script>
+      </header>
+      <button type="button" onclick="getCountry()" id="homepage"><i class="fas fa-arrow-left"></i>Home </button>
+      <article class="countries" id="countries-list">
+      </article>
+      <article class="full-details-container">
+      </article>
+    </main>
+  </div>
+  <script src=" country.js" type="text/javascript" charset="utf-8"></script>
 </body>
 
 </html>
