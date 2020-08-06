@@ -396,7 +396,7 @@ section.size-img article:last-child {
 }
 section.size-img img {
   width: 100%;
-  height: 80%;
+  height: 100%;
 }
 section:nth-last-of-type(3) {
   display: flex;
