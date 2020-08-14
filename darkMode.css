@@ -1,0 +1,22 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color:rgba(0,0,0,0)
+}
+html[data-theme="darkMode"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+html[data-theme="darkMode"] img{
+  filter: invert(1) hue-rotate(180deg);
+}
+html[data-theme="lightMode"] {
+ filter: none;
+}
+html[data-theme="lightMode"] img {
+  filter: none;
+}
+html {
+    transition: color 500ms, background-color 500ms;
+}
+body {
+  background-color:#ffffff;
+}
