@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" d>
+<html lang="en" data-theme="lightMode">
 <head>
   
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -8,9 +8,21 @@
   <link rel="stylesheet" href="darkMode.css" type="text/css" media="all" />
 </head>
 <body>
-  <p>Click the button to switch between dark and light mode</p>
-  <button class="dark-mode" type="button" onclick="">Dark</button>
-      <button class="light-mode" type="button" >Light</button>
+  <div class="btns">
+     <aside>
+     <p class="mode-desc">Enable Dark Mode</p>
+
+     <button class="dark-mode" type="button" onclick="">
+       <img src="images/moon-mode.svg" width="32" height="32"/>
+       </button>
+      <button class="light-mode" type="button" >
+         <img src="images/sun-mode.svg" width="32" height="32"/>
+      </button>
+      </aside>
+      </div>
+      
+ 
+
    <script src="darkMode.js"></script>
 </body>
 </html>
